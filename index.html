@@ -14,23 +14,66 @@
             console.log(randomval);
 
             switch (randomval){
-                case '1':
-                    return("Rock");
+                case 1:
+                    return("rock");
                     break;
 
-                case '2':
-                    return("Paper");
+                case 2:
+                    return("paper");
                     break;
 
-                case '3':
-                    return("Scissors");
+                case 3:
+                    return("scissors");
                     break;
             }
+        }
+        
+        function playerSelection(){
+            let exit = false;
+            while (exit == false){
+                let player = window.prompt("Enter your choice: 'Rock', 'Paper', or 'Scissors': ")
+                player = player.toLocaleLowerCase();
+
+                if(player === 'rock' || player === 'paper' || player === 'scissors'){
+                    exit = true;
+                    return(player);
+                }
+
+                else{
+                alert("Please type in an appropriate option")
+                }
+                
+            }
+        }
+
+        function playround(playermove, computer){
+            if(playermove === computer){
+                alert("Its a Tie!");
+                return;
+            }
+            else if(playermove === 'rock'){
+                computer === 'scissors' ? alert("You Win!") : alert("You lost :(");
+                return;
+            }
+
+            else if(playermove === 'paper'){
+                computer === 'rock' ? alert("You Win!") : alert("You lost :(");
+                return;
+            }
+
+            else if(playermove === 'scissors'){
+                computer === 'paper' ? alert("You Win!") : alert("You lost :(");
+                return;
+           }
         }
 
         let compmove = counterplay();
         console.log(compmove);
 
+        let playermove = playerSelection();
+        console.log(playermove);
+
+        playround(playermove, compmove);
 
     </script>
 
