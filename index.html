@@ -47,34 +47,61 @@
         }
 
         function playround(playermove, computer){
+            let result;
             if(playermove === computer){
-                alert("Its a Tie!");
-                return;
+                result = "The match is a Tie!";
+                return result;
             }
             else if(playermove === 'rock'){
-                computer === 'scissors' ? alert("You Win!") : alert("You lost :(");
-                return;
+                computer === 'scissors' ? result = "You Win the match!" : result = "You lost the match :(";
+                return result
             }
 
             else if(playermove === 'paper'){
-                computer === 'rock' ? alert("You Win!") : alert("You lost :(");
-                return;
+                computer === 'rock' ? result = "You Win the match!" : result = "You lost the match :(";
+                return result;
             }
 
             else if(playermove === 'scissors'){
-                computer === 'paper' ? alert("You Win!") : alert("You lost :(");
-                return;
+                computer === 'paper' ? result = "You Win the match!" : result = "You lost the match :(";
+                return result;
            }
         }
 
+        
+        /*
         let compmove = counterplay();
         console.log(compmove);
 
         let playermove = playerSelection();
         console.log(playermove);
+        */
+        let player_points = 0;
+        let comp_points = 0;
+        
 
-        playround(playermove, compmove);
+        for(let i = 0; i < 5; i++){
+            let compmove = counterplay();
+            console.log(compmove);
 
+            let playermove = playerSelection();
+            console.log(playermove);
+
+            let match = playround(playermove, compmove);
+            alert(match);
+            if(match != "The match is a Tie!"){
+                match === "You Win the match!" ? player_points += 1 : comp_points += 1;
+            }
+        }
+
+        console.log(player_points);
+        console.log(comp_points);
+        if(player_points === comp_points){
+            alert("The game is a tie")
+        }
+        else{
+            player_points > comp_points ? alert("The player won the Game!") : alert("The computer won the game.");
+        }
     </script>
 
 </body>
